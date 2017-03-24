@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'StaticPagesController@home');
+Route::get('/help', 'StaticPagesController@help');
+Route::get('/about', 'StaticPagesController@about');
+
+// 简写
+/*get('/', 'StaticPagesController@home');
+get('/help', 'StaticPagesController@help');
+get('/about', 'StaticPagesController@about');*/
