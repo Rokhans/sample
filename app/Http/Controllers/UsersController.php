@@ -123,6 +123,7 @@ class UsersController extends Controller
         });
     }
 
+    // 确认邮件
     public function confirmEmail($token)
     {
         $user = User::where('activation_token', $token)->firstOrFail();
