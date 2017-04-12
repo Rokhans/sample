@@ -20,7 +20,7 @@ class UsersController extends Controller
     {
         // 用中间件过滤未登陆用户的行为
         $this->middleware('auth', [
-            'only' => ['edit', 'update', 'show', 'index', 'destroy']
+            'only' => ['edit', 'update', 'show', 'index', 'destroy', 'followings', 'followers']
         ]);
         $this->middleware('guest', [
             'only' => ['create']
@@ -138,5 +138,23 @@ class UsersController extends Controller
         Auth::login($user);
         session()->flash('success', '恭喜你，激活成功！');
         return redirect()->route('users.show', [$user]);
+    }
+
+    // 关注的人列表
+    public function followings($id)
+    {
+        $user = User::findOrFail($id);
+        $users = $user->followings()->paginate(30);
+        $title = '关注的人';
+        return view('users.show_follow', compact('users', 'title'));
+    }
+
+    //  粉丝列表
+    public function followers($id)
+    {
+        $user = User::findOrFail($id);
+        $users = $user->followers()->paginate(30);
+        $title = '粉丝';
+        return view('users.show_follow', compact('users', 'title'));
     }
 }
