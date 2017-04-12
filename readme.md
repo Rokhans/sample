@@ -1,3 +1,6 @@
+## Laravel Practice Project
+基于Laravel 5.1 的一个练习微博
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
